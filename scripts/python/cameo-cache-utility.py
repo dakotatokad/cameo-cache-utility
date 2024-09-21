@@ -1,7 +1,9 @@
+from functools import cache
 import os
 import getpass
 from datetime import date
 import backupAndArchive
+import array
 
 def main():
     cleanScreen()
@@ -102,9 +104,9 @@ def getCameoVersion():
 
 def buildCameoPath(username, cameoVersion):
     cameoPathArray = ["offline path", "cache path"]
-    # Set offline projects path
-    cameoPathArray = ["C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "\\" + cameoVersion[1] + "\\restricted\\offline\\projects", "C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "//" + cameoVersion[1] + "\\cache\\"]
-
+    offlinePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1], 'restricted', 'offline')
+    cachePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1], 'cache')
+    cameoPathArray = [offlinePath, cachePath]
     return cameoPathArray
 
 if __name__ == "__main__":
