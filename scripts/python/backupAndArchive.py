@@ -17,6 +17,9 @@ def removeOfflineProjects(cameoPath):
     #shutil.make_archive(archive_name, "zip", root_dir=cameoPath, base_dir=cameoPath+"\\original")
     #shutil.make_archive(date.today(), zip, cameoPath + "\\archive", cameoPath, False)
     #time.sleep(3)
+    print('Offlines projects have been archived and removed...')
+    os.system('tree')
+    os.system('pause')
 
     
 def removeCache(cameoPath):
