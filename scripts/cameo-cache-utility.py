@@ -17,7 +17,25 @@ def main():
     username = getUserId()
     cameoVersion = getCameoVersion()
     cameoPathArray = buildCameoPath(username, cameoVersion)
-    
+
+    while True:
+        cleanScreen()
+        print("Do you want to...")
+        print("[1] Remove offline projects")
+        print("[2] Remove local cache")
+        print("[0] Exit")
+        choice = int(input("[1,2,0]: "))
+        if choice == 1:
+            removeOfflineProjects(cameoPathArray[0])
+            os.system('pause')
+        elif choice == 2:
+            removeCache(cameoPathArray[1])
+            os.system('pause')
+        elif choice == 0:
+            break
+        else:
+            print("Your selection is not a valid option. Please try again...")
+            os.system('pause')
 
 # =========================
 
@@ -83,17 +101,15 @@ def getCameoVersion():
 def buildCameoPath(username, cameoVersion):
     cameoPathArray = ["offline path", "cache path"]
     # Set offline projects path
-    cameoPathArray.insert("C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "\\" + cameoVersion[1] + "\\restricted\\offline\\projects", 0)
-    # Set cache projects path
-    cameoPathArray.insert("C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "//" + cameoVersion[1] + "\\cache\\", 1)
+    cameoPathArray = ["C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "\\" + cameoVersion[1] + "\\restricted\\offline\\projects", "C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "//" + cameoVersion[1] + "\\cache\\"]
 
     return cameoPathArray
 
-def removeOfflineProjects():
-    print("Remove offline projects")
+def removeOfflineProjects(cameoPath):
+    print("Path: ", cameoPath)
 
-def removeCache():
-    print("Remove cache")
+def removeCache(cameoPath):
+    print("Path: ", cameoPath)
 
 if __name__ == "__main__":
     main()
