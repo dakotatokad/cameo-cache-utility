@@ -1,9 +1,7 @@
 from functools import cache
 import os
 import getpass
-from datetime import date
 import backupAndArchive
-import array
 
 def main():
     cleanScreen()
@@ -40,6 +38,10 @@ def main():
         else:
             print("Your selection is not a valid option. Please try again...")
             os.system('pause')
+
+    cleanScreen()
+    print("Script complete")
+    os.system('pause')
 
 # =========================
 
@@ -103,9 +105,8 @@ def getCameoVersion():
     return cameoVersion
 
 def buildCameoPath(username, cameoVersion):
-    cameoPathArray = ["offline path", "cache path"]
-    offlinePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1], 'restricted', 'offline')
-    cachePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1], 'cache')
+    offlinePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1], 'restricted', 'offline') #\projects
+    cachePath = os.path.join('C:\\Users', username, 'AppData', 'Local', cameoVersion[0], cameoVersion[1]) #\cache
     cameoPathArray = [offlinePath, cachePath]
     return cameoPathArray
 
