@@ -1,5 +1,7 @@
 import os
 import getpass
+from datetime import date
+import backupAndArchive
 
 def main():
     cleanScreen()
@@ -26,10 +28,10 @@ def main():
         print("[0] Exit")
         choice = int(input("[1,2,0]: "))
         if choice == 1:
-            removeOfflineProjects(cameoPathArray[0])
+            backupAndArchive.removeOfflineProjects(cameoPathArray[0])
             os.system('pause')
         elif choice == 2:
-            removeCache(cameoPathArray[1])
+            backupAndArchive.removeCache(cameoPathArray[1])
             os.system('pause')
         elif choice == 0:
             break
@@ -104,12 +106,6 @@ def buildCameoPath(username, cameoVersion):
     cameoPathArray = ["C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "\\" + cameoVersion[1] + "\\restricted\\offline\\projects", "C:\\Users\\" + username + "\\AppData\\Local\\." + cameoVersion[0] + "//" + cameoVersion[1] + "\\cache\\"]
 
     return cameoPathArray
-
-def removeOfflineProjects(cameoPath):
-    print("Path: ", cameoPath)
-
-def removeCache(cameoPath):
-    print("Path: ", cameoPath)
 
 if __name__ == "__main__":
     main()
